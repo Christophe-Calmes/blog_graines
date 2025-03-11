@@ -28,9 +28,9 @@ $gradient-radial: radial-gradient(#A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #1
 */
 :root {
   /*Variables Button*/
-  --body-color:#1A1A1Aff;
-  --main-background-color: #5F501Fff;
-  --main-color: #E8E8E8ff;
+  --body-color:rgb(44, 44, 44);
+  --main-background-color: rgb(126, 126, 126);
+  --main-color: rgb(236, 236, 236);
   --main-background-MagicForm: #1A1A1Aff;
   --main-background-navBar: #1E1E1Eff;
   --color-select: #ECBC2Dff;
@@ -41,7 +41,7 @@ $gradient-radial: radial-gradient(#A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #1
   /*print variable*/
   --main-printBorder: #9e9e9e solid 1px;
   --main-PrintBackGround: var(--color-neutralBone);
-  --main-Printcolor: #0000;
+  --main-Printcolor: #68686800;
 
  
   --main-padding: 15px 32px;
@@ -58,14 +58,14 @@ $gradient-radial: radial-gradient(#A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #1
   --font-family-titleEvent: "IBM Plex Mono", monospace;
   --font-weight: 500;
   --font-style: normal;
-  --color-title: #1A8921ff;;
-  --color-subTitle: #1A8921ff;;
+  --color-title: rgb(223, 223, 223);;
+  --color-subTitle: rgb(185, 185, 185);;
   /*Présentation*/
   --padding-sheddulingShop: 0.2em 0 0.2em 0;
   /*Variable color*/
   --color-green: #4f8b36;
   --color-yellow: #f1df57;
-  --color-chair: #fcfcfc;
+  --color-chair: #f3f3f3;
   --color-blueOneChair: #1B384D;
   --color-red:#cc3915;
   --color-blood: #700B15;
@@ -323,13 +323,7 @@ a {
 }
 
 /*Table website*/
-.tableSpecialsRules {
-  border: #151515 solid 1px;
-}
-.tableSpecialsRules tr:nth-child(odd) {
-  background-color: #d6d6d6;
-  font-weight:600;
-}
+
 .tableWebSite {
   border-radius: var(--main-radius);
   background-color: var(--main-background-color);
@@ -337,16 +331,6 @@ a {
   margin-left: 1em;
   margin-right: 1em;
   width: 90%;
-}
-.tableWebVehicle {
-  border: var(--main-border);
-  font-size: var(--main-font-size);
-  margin-left: 1em;
-  margin-right: 1em;
-  width: auto;
-}
-.tableWebVehicle td {
-  text-align: center;
 }
 .tableWebSite th {
   background-color: var(--main-background-color);
@@ -364,58 +348,16 @@ a {
   background-color: var(--main-background-color);
   font-weight:600;
 }
-.tableSR {
-  border: #151515 solid 1px;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.tableSR th {
-  text-align: left;
-}
-.tableSR td {
-  border: #151515 solid 1px;
-  text-align: justify;
-  padding: 0.5em 0.5em 0.5em 0.2em;
-}
+
 /*Color table Weapon & Miniature & wehicle*/
-.tableCodex, td {
-  background-color: var(--main-background-color);
-  align-content: center;
-  text-align: center;
-  border: var(--main-border);
-  padding: 0.5em;
-  border-radius: var(--main-radius);
-}
-.tableWeaponCenter {
-  margin-top: 2vw;
-  display: flex;
-  /*align-items: center;*/
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: center;
-}
-.tablePrinter, td {
-  margin-left: inherit;
-  border: 1px solid rgb(187, 187, 187);
-  font-size: 0.8em;
-  text-align: justify;
-}
-.srTableStyle {
-  text-align: left;
-}
-.printPicture {
-  height: 200px;
-}
+
 .underLine {
   text-decoration: underline;
   font-weight: 400;
   padding: 0.5em 1em 0.5em 1em;
   border-radius: var(--main-radius);
 }
-.codexGrey {
-  background-color: #949494;
-  color:#0e0d0d;
-}
+
  .red {
   background-color: #f81c1c;
   color: #ffffff;
@@ -477,6 +419,7 @@ a {
   border-radius: 5px;
 }
 .customerForm {
+  background-color: var(--main-background-MagicForm);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -515,7 +458,9 @@ label::first-letter {
 input, textarea {
   background-color: var(--color-chair);
   border-radius: var(--main-radiusInput);
-
+}
+#name_picture {
+  background-color: var(--main-background-MagicForm);
 }
 select {
   padding-top: 0.3em;
@@ -590,55 +535,6 @@ select:disabled {
 }
 
 /*Grid*/
-
-.displayElementOfList {  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "Identity Stat Move Nbr IndividualPrice";
-}
-
-.Identity { 
-  grid-area: Identity;
-  padding: 0.3em;
-  border: var(--main-border);
-  border-radius: var(--main-radius); 
-}
-
-.Stat { 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-area: Stat; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);}
-
-.Move {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  grid-area: Move;     
-  border: var(--main-border);
-  border-radius: var(--main-radius);}
-
-.Nbr { 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-area: Nbr;     
-  border: var(--main-border);
-  border-radius: var(--main-radius);}
-
-.IndividualPrice { 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  grid-area: IndividualPrice; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);}
 
 
 .adminNav {  display: grid;
@@ -748,42 +644,7 @@ select:disabled {
     justify-content: center;
     border: var(--color-blueOneChair) solid 1px;
   }  
-.itemSR {
-  display: flex;
-  min-height: auto;
-  padding: 0.5em;
-  background: var(--color-chair);
-  color: rgb(32, 32, 32);
-  border-radius: var(--main-radiusInput);
-  border:var(--main-border);
-  align-items: center;
-  justify-content: center;
-  /*border: var(--color-blueOneChair) solid 1px;*/
-}
-.itemPictureMini {
-  display: flex;
-  flex-direction: column;
-  min-height: 25em;
-  padding: 0.5em;
-  background: var(--color-chair);
-  color: rgb(32, 32, 32);
-  border-radius: var(--main-radiusInput);
-  border:var(--main-border);
-  align-items: center;
-  justify-content: center;
-}
-.itemWeapon {
-    min-height: auto;
-    min-width: auto;
-    padding: 0.5em;
-    background: var(--color-chair);
-    color: rgb(32, 32, 32);
-    border-radius: var(--main-radiusInput);
-    display: inline;
-    align-items: center;
-    justify-content: center;
-    border: var(--color-blueOneChair) solid 1px;
-}
+
 /*Variable CSS boutton*/
 
 /*Fin Maitre boutton*/
@@ -908,73 +769,7 @@ transition: display 3s;
 }
 /*Fin présentation graines*/
 /*Grid */
-.shoppingHour {  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "dayOfWeek OpenMorning CloseMorning OpenAfternoon CloseAfternoon";
-  font-family: var(--font-family);
-  font-style: var(--font-style);
-}
-.shoppingHourCloseMorning {  display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "dayOfWeek close OpenAfternoon CloseAfternoon";
-  font-family: var(--font-family);
-  font-style: var(--font-style);
-}
-.shoppingHourCloseAfternoon {  display: grid;
-  grid-template-columns: 1fr 1fr 1fr  2fr;
-  grid-template-rows: 1fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "dayOfWeek OpenMorning CloseMorning close";
-  font-family: var(--font-family);
-  font-style: var(--font-style);
-}
 
-.close {
-  font-family: var(--font-family);
-  font-style: var(--font-style);
-  margin: 0.8em;
-  padding: var(--padding-sheddulingShop);
-  color:var(--color-neutralBone);
-}
-.dayOfWeek { 
-  grid-area: dayOfWeek;
-  margin: var(--main-marginButton);
-  padding: var(--padding-sheddulingShop);
-}
-
-.OpenMorning { 
-  grid-area: OpenMorning;
-  margin: var(--main-marginButton);
-  padding: var(--padding-sheddulingShop);
-}
-
-.CloseMorning { 
-  grid-area: CloseMorning; 
-  margin: var(--main-marginButton);
-  padding: var(--padding-sheddulingShop);
-}
-
-.OpenAfternoon { 
-  grid-area: OpenAfternoon; 
-  margin: var(--main-marginButton);
-  padding: var(--padding-sheddulingShop);
-}
-
-.CloseAfternoon { 
-  grid-area: CloseAfternoon; 
-  margin: var(--main-marginButton);
-  padding: var(--padding-sheddulingShop);
-}
 
 .moduleNav {
   display: grid;
@@ -1108,101 +903,7 @@ nav {
   filter: grayscale(100%);
 }
 /*GRID*/
-/*.printVehicle { 
-  width: 100%;
-  background-color: var(--main-background-navBar);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 20vh;
-  /*grid-template-columns: 25%;*/
-  /*gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas: "Picture Name Type DQM Structure Armor Move";
-  font-size: 0.8em;
-  padding: 0.5em;
 
-}*/
-.printVehicle {
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr; 
-  gap: 3px 3px; 
-  grid-template-areas: 
-    "Picture Name Type DQM Armor Structure"
-    "Picture PriceTT Size Move Fligth StationnaryFlight"; 
-  justify-content: center; 
-  justify-items: stretch; 
-}
-.Fligth { 
-  grid-area: Fligth; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
-}
-.StationnaryFlight { 
-  grid-area: StationnaryFlight; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
-}
-.Size { 
-  grid-area: Size; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
-}
-.PriceTT { 
-  grid-area: PriceTT; 
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
-}
-
-.Picture { grid-area: Picture; }
-
-.Name { 
-  grid-area: Name;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
-}
-.centerDatasheet {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dataSheetBox {
-  display: inline-block;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  padding: 1.2em;
-  width: 60%;
-  font-size: 0.8em;
-}
-.titlePrintDataSheet {
-  font-weight: 500;
-  text-align: left;
-  font-size: 1.5em;
-}
-.dataSheetInfoPrint  {
-  padding-right: 0.2em;
-  font-size: 1.5em;
-}
 .fontWeigth {
   font-weight: bold;
 }
@@ -1227,96 +928,10 @@ nav {
 }
 
 
-.Type { 
-  grid-area: Type;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;  
-}
 
-.DQM { grid-area: DQM;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;  }
 
-.Structure { grid-area: Structure;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;  }
 
-.Armor { grid-area: Armor;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;  }
-
-.Move { grid-area: Move;
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;  }
-
-.SpecialRules {  
-  padding:0;
-  display: flex;
-  width: fit-content;
-  /*border: var(--main-border);*/
-  border-radius: var(--main-radius);
-  background-color: var(--main-background-navBar);
-  /*padding: 0.5em;*/
-}
-
-.NameRS {   
-  border: var(--main-border);
-    border-radius: var(--main-radius);
-    padding: 0.6em;
-    margin: 0.2em;
-    align-content: center;
   
-}
-.TextRS {  
-  border: var(--main-border);
-  border-radius: var(--main-radius);
-  padding: 0.6em;
-  margin: 0.2em;
-  align-content: center;
-  text-align: justify;
- 
-}
-
-.dataSheetWeapon {
-  width: fit-content;
-  display: flex;
-  /*border: var(--main-border);*/
-  border-radius: var(--main-radius);
-  background-color: var(--main-background-navBar);
-  color:var(--color-neutralBone);
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  margin-bottom: 0.5em;
-  padding: 0.5em;
-  }
-  .dataSheetWeapon div {
-    border: var(--main-border);
-    border-radius: var(--main-radius);
-    padding: 0.6em;
-    margin: 0.2em;
-    align-content: center;
-  }
 /*GRID*/
 .pictureBlog {
   border-radius: var(--main-radius);
@@ -1417,9 +1032,7 @@ nav {
     align-items: center;
     justify-content: center;
 }
-.hoursOfShopping {
-font-size: 0.8em;
-}
+
 
 .TitleNews { 
   grid-area: TitleNews;
@@ -1452,14 +1065,8 @@ font-size: 0.8em;
   .pictureNews{
     margin:6vw;
   }
-  .galleryReserveTable {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .open {
-    width: 20em;
-  }
+ 
+ 
   .modal {
     width: 70vw;
     margin-left: auto;
@@ -1473,123 +1080,5 @@ font-size: 0.8em;
   .flex-rows-carousel {
     flex-direction: column;
   }
-
 }
 /*Burger Menu*/
-@media print {
-  @page {
-    margin: 5cm;
-    size: landscape;
-  }
-  .centrale {
-    display: none;
-  }
-  body {
-    margin:0;
-  }
-  header {
-    display: none;
-  }
-  button {
-    display: none;
-  }
-  footer {
-    display: none;
-  }
-  section {
-    width: auto;
-    font-size: 0.7em;
-    page-break-after: always;
-
-  }
-  main {
-    margin-top: 2em;
-  }
-  h2, h3, h4, h5, h6 {
-    color:#151515;
-  }
-  
-  .dataSheetBox {
-    height: auto !important;
-    width: 100em;
-    background-color: none;
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .printVehicle {
-    margin-top: 2em;
-    font-weight:bolder;
-    width: 100%;
-    font-size: 0.7em;
-    height: 20vh;
-    color:#0e0d0d;
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .Name { 
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-
-  .Type { 
-    border: var(--main-printBorder); 
-  }
-  
-  .DQM { 
-    border: var(--main-printBorder);
-  }
-  
-  .Structure { 
-    border: var(--main-printBorder);
-  }
-  
-  .Armor { 
-    border: var(--main-printBorder);
-   }
-   .Move {
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .NameRS {   
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .TextRS {  
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .PriceTT {
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .Size {
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .Fligth {
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  .StationnaryFlight {
-    border: var(--main-printBorder);
-    color:#0e0d0d;
-  }
-  
-  .dataSheetWeapon div {
-     border: var(--main-printBorder);
-     color:#0e0d0d;
-    }
-  .borderDataSheetWeapon {
-    border: var(--main-printBorder);
-    margin-left:0;
-    margin-right: auto;
-  }
-  .imgCarouselAuto {
-    border: var(--main-printBorder);
-    filter: grayscale();
-  }
-  .checkbox-no-Reactive {
-    border: var(--main-printBorder);
-  }
-
-}
