@@ -50,10 +50,7 @@ $dataArticle = $blog->admiArticleOfBlog ($idArticle, 1, $idNav);
             <p class="link" onclick="insererMarqueur('eCenter')">&lt;/center&gt;</p>
         </div>
     </div>
-    <textarea id="article" name="article" rows="20" cols="140"><?php echo $dataArticle['article'];
-    print_r($dataArticle);
-    
-    ?></textarea>
+    <textarea id="article" name="article" rows="20" cols="140"><?php echo $dataArticle['article']; ?></textarea>
     <label for="publish">Publish ?</label>
     <select id="status" name="publish">
         <?php

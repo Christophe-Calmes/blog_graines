@@ -6,33 +6,33 @@
 /* CSS HEX */
 
 /* SCSS HEX */
-/*--field-drab: #5F501Fff;
---saffron: #ECBC2Dff;
---eerie-black: #1A1A1Aff;
---black: #000000ff;
---platinum: #E8E8E8ff;*/
+/*--black-bean: #320001ff;
+--sinopia: #C5522Eff;
+--kobicha: #5D3720ff;
+--vanilla: #FFF0B3ff;*/
 
 
 
 
 /* SCSS Gradient */
-/*$gradient-top: linear-gradient(0deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-right: linear-gradient(90deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-bottom: linear-gradient(180deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-left: linear-gradient(270deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-top-right: linear-gradient(45deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-bottom-right: linear-gradient(135deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-top-left: linear-gradient(225deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-bottom-left: linear-gradient(315deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
-$gradient-radial: radial-gradient(#A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
+/*
+$gradient-top: linear-gradient(0deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-right: linear-gradient(90deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-bottom: linear-gradient(180deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-left: linear-gradient(270deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-top-right: linear-gradient(45deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-bottom-right: linear-gradient(135deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-top-left: linear-gradient(225deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-bottom-left: linear-gradient(315deg, #320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
+$gradient-radial: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
 */
 :root {
   /*Variables Button*/
-  --body-color:rgb(44, 44, 44);
-  --main-background-color: rgb(126, 126, 126);
+  --body-color:#320001ff;
+  --main-background-color: #C5522Eff;
   --main-color: rgb(236, 236, 236);
-  --main-background-MagicForm: #1A1A1Aff;
-  --main-background-navBar: #1E1E1Eff;
+  --main-background-MagicForm: #5D3720ff;
+  --main-background-navBar: #5D3720ff;
   --color-select: #ECBC2Dff;
   --color-selected: #ECBC2Dff;
   --main-border: 1px solid #ECBC2Dff;
@@ -52,14 +52,14 @@ $gradient-radial: radial-gradient(#A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #1
   --main-cursor: pointer;
   --main-marginButton: 0.2em;
   /*Variables global*/
-  --main-shadow: linear-gradient(135deg, #A4A39Aff, #A3091Aff, #7B0E23ff, #1E1E1Eff, #161616ff, #20213Dff);
+  --main-shadow: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
   /*--font-family: "Bebas Neue", sans-serif;*/
   --font-family: "IBM Plex Mono", monospace;;
   --font-family-titleEvent: "IBM Plex Mono", monospace;
   --font-weight: 500;
   --font-style: normal;
-  --color-title: rgb(223, 223, 223);;
-  --color-subTitle: rgb(185, 185, 185);;
+  --color-title: #FFF0B3ff;
+  --color-subTitle: #FFF0B3ff;
   /*Présentation*/
   --padding-sheddulingShop: 0.2em 0 0.2em 0;
   /*Variable color*/
@@ -953,6 +953,73 @@ nav {
   justify-content: center;
   height: 20em;
 }
+.pictureBlog {
+  border-radius: var(--main-radius);
+  border: var(--main-border);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+/*Carrousel*/
+.custom-slider { display: none; }
+.miniPictureBlog {
+  border-radius: var(--main-radius);
+  border: var(--main-border);
+  width: 100%;
+}
+.slide-text {
+  position:sticky;
+  color: var(--color-neutralBone);
+  font-size: 1.1em;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+.slide-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+}
+
+.slide-index {
+    color: #ffffff;
+    font-size: 13px;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+}
+.slide-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+.slide-dot{ text-align: center; }
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: var(--main-background-color);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active, .dot:hover { background-color:var(--color-blueOneChair); }
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+/*Carrousel*/
 
 @media only screen and (max-width: 768px) {
   main {

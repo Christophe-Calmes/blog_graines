@@ -228,7 +228,6 @@ class TemplateBlog extends PresentationHTML
                     <img class="CarrouselPictureBlog" src="modules/blog/blogPictures/'.$value['name_picture'].'" alt="'.$value['altImg'].'"/>
                     <div class="slide-text">'.$value['altImg'].'</div>
                 </div>';
-
                 $numberPicture +=1;
             }
             echo '</div>';
