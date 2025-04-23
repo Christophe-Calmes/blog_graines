@@ -27,8 +27,8 @@ class TemplateBlog extends PresentationHTML
     }
     private function displayOneArticleBlog ($data) {
         echo '<aside class="sectionBlog">';
-            echo '<h2>'.$data['title'].'</h2>';
-                echo '<h5>Catégorie : '.$data['subject'].'</h5>';
+            echo '<h2 class="titleSite">'.$data['title'].'</h2>';
+                echo '<h3>Catégorie : '.$data['subject'].'</h3>';
                     echo '<p>Le '.brassageDate($data['creat_date']).'</p>';
                         echo $this->htmlText ($data['article']);
         echo '</aside>';
@@ -58,7 +58,7 @@ class TemplateBlog extends PresentationHTML
     }
     private function displayPreviweArticleBlog ($data) {
             echo '<aside class="sectionBlog">';
-                echo '<h2><a class="link" href="'.findTargetRoute($this->redirectionPage ()).'&idArticle='.$data['idArticle'].'">'.$data['title'].'</a></h2>';
+                echo '<h2 class="titleSite"><a class="link" href="'.findTargetRoute($this->redirectionPage ()).'&idArticle='.$data['idArticle'].'">'.$data['title'].'</a></h2>';
                 if((!empty($_SESSION))&&($_SESSION['role'] == 3)) {
                     echo '<h2><a class="link" href="'.findTargetRoute(218).'&idArticle='.$data['idArticle'].'">Administrer</a></h2>';
                 }
@@ -107,6 +107,22 @@ class TemplateBlog extends PresentationHTML
             echo '<select id="id_subject" name="id_subject">';
                 foreach ($dataCategorie as $value) {
                     echo '<option value="'.$value['id'].'">'.$value['subject'].'</option>';
+                }
+            echo ' </select>';
+        }
+    }
+    public function selectedSubject ($idSubject) {
+        $dataCategorie = $this->getAllCategories (1);
+        if(!empty($dataCategorie)) {
+            echo '<label for="id_subject">Catégorie</label>';
+            echo '<select id="id_subject" name="id_subject">';
+                foreach ($dataCategorie as $value) {
+                    if($value['id'] == $idSubject) {
+                        echo '<option value="'.$value['id'].'" selected>'.$value['subject'].'</option>';
+                    } else {
+                        echo '<option value="'.$value['id'].'">'.$value['subject'].'</option>';
+                    }
+                    
                 }
             echo ' </select>';
         }
@@ -177,16 +193,55 @@ class TemplateBlog extends PresentationHTML
     public function admiArticleOfBlog ($idArticle, $valid, $idNav) {
         return $this->getOneArticle ($idArticle, $valid);
     }
-    public function displayImgCode ($valid) {
-        $dataPictures = $this->getAllPictureBlog ($valid);
+    public function displayImgCode ($valid, $idNav, $firstPage, $PictureByPage) {
+        function carrousel ($data) {
+            if($data) {
+                return 'Oui';
+            }
+            return 'Non';
+        }
+        $dataPictures = $this->getPictureBlogPagination ($valid, $firstPage, $PictureByPage);
         echo '<div class="gallery">';
         foreach ($dataPictures as $value) {
             echo '<aside class="itemPictureMini">';
                 echo '<img class="miniPictureBlog" src="modules/blog/blogPictures/'.$value['name_picture'].'" alt="'.$value['altImg'].'"/>';
                 echo '<figcaption>OpenPicture {'.$value['name_picture'].'} ('.$value['altImg'].') ClosePicture</figcaption>';
                 echo '<p>alt = '.$value['altImg'].'</p>';
+                echo '<p>Carrousel ? '.yes($value['carrouselPicture']).'</p>';
+                    echo '<form action="'.encodeRoutage(141).'" method="post">';
+                    echo '<input type="hidden" name="idPicture" value="'.$value['id'].'"/>';
+                    echo '<button class="buttonForm" type="submit" name="idNav" value="'.$idNav.'">Delete picture</button>';
+                    echo '</form>';
             echo '</aside>';
+    
         }
         echo '</div>';
+    }
+    public function carrouselDisplayPicture ($valid, $carrousel, $limit) {
+        $dataPictures = $this->getCarouselPictures ($valid, $carrousel, $limit);
+        if(!empty($dataPictures)) {
+            $countPictures = count($dataPictures);
+            echo '<div class="slide-container">';
+            $numberPicture = 1;
+            foreach ($dataPictures as $value) {
+                echo '<div class="custom-slider fade">
+                    <img class="CarrouselPictureBlog" src="modules/blog/blogPictures/'.$value['name_picture'].'" alt="'.$value['altImg'].'"/>
+                    <div class="slide-text">'.$value['altImg'].'</div>
+                </div>';
+
+                $numberPicture +=1;
+            }
+            echo '</div>';
+            echo '<div class="slide-dot">';
+            for ($i=1; $i <= $countPictures ; $i++) { 
+                echo '<span class="dot" onclick="currentSlide('.$i.')"></span>';
+            }
+                
+            echo' </div>';
+        } else {
+            echo '<div class="slide-container">';
+            echo '<h3>No image available</h3>';
+            echo' </div>';
+        }
     }
 }

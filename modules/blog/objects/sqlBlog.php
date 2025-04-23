@@ -1,15 +1,9 @@
 <?php
 class SQLBlog 
 {
-    private $adressDB ;
-
-    public function __construct() {
-        $this->adressDB = 1;
-    }
-
     private function getLastid () {
         $select = "SELECT `id` AS `idArticle` FROM `articles` ORDER BY `id` DESC LIMIT 1;";
-        return ActionDB::select($select, [], $this->adressDB)[0]['idArticle'];
+        return ActionDB::select($select, [], 1)[0]['idArticle'];
     }
     private function recordCategorieArticle ($id_subject) {
         $id_article = $this->getLastid ();
@@ -26,7 +20,7 @@ class SQLBlog
     }
     public function creatNewCategorie ($param) {
         $insert = "INSERT INTO `subjects`( `subject`, `occurance`) VALUES (:subject, :occurance);";
-        return ActionDB::access($insert, $param, 1);
+        return ActionDB::access($insert, $param, 2);
     }
     public function idCategorieExist ($id) {
         $select = "SELECT COUNT(`id`) AS `nbrCategorie` FROM `subjects` WHERE `id` = :id;";
@@ -48,6 +42,7 @@ class SQLBlog
                     FROM `link_subject_article` 
                     INNER JOIN `articles` ON `id_article` = `articles`.`id`
                     INNER JOIN `subjects` ON `id_subject` = `subjects`.`id`
+                    WHERE  `publish` = 1
                     ORDER BY `articles`.`id` DESC LIMIT 1;";
         $lastArticle = ActionDB::select($select, [], 1);
         if(!empty($lastArticle)) {
@@ -75,7 +70,7 @@ class SQLBlog
     public function nameSubject ($idSubject) {
         $select = "SELECT `subject` FROM `subjects` WHERE `id` = :idSubject;";
         $param = [['prep'=>':idSubject', 'variable'=>$idSubject]];
-        return ActionDB::select($select, $param, 1)[0]['subject'];
+        return ActionDB::select($select, $param, 2)[0]['subject'];
     }
     protected function getArticlePagination($firstPage, $parPage, $idSubject, $publish) {
         $select = "SELECT 
@@ -96,7 +91,7 @@ class SQLBlog
         LIMIT {$firstPage}, {$parPage};";
         $param = [['prep'=>':idSubject', 'variable'=>$idSubject],
                     ['prep'=>':publish', 'variable'=>$publish]];
-        return ActionDB::select($select, $param, 1);
+        return ActionDB::select($select, $param, 2);
     }
     protected function getArticlePaginationAdmin($firstPage, $parPage, $publish) {
         $select = "SELECT 
@@ -116,17 +111,17 @@ class SQLBlog
         ORDER BY `articles`.`creat_date` DESC, `id_subject`
         LIMIT {$firstPage}, {$parPage};";
         $param = [['prep'=>':publish', 'variable'=>$publish]];
-        return ActionDB::select($select, $param, 1);
+        return ActionDB::select($select, $param, 2);
     }
     protected function getOneArticle ($idArticle, $valid) {
-        $select = "SELECT `articles`.`id` AS `idArticle`, `author`, `title`, `article`, `articles`.`valid`, `publish`, `articles`.`creat_date`, `articles`.`update_date`,  `subject`
+        $select = "SELECT `articles`.`id` AS `idArticle`, `author`, `title`, `article`, `articles`.`valid`, `publish`, `articles`.`creat_date`, `articles`.`update_date`,  `subject`, `id_subject`
                 FROM `articles`
                 INNER JOIN `link_subject_article` ON `articles`.`id` = `id_article`
                 INNER JOIN `subjects` ON `id_subject` = `subjects`.`id`
-                WHERE `articles`.`id` = :idArticle AND `articles`.`valid` = :idValid;";
+                WHERE `articles`.`id` = :idArticle AND `articles`.`valid` = :idValid; AND ";
         $param = [['prep'=>':idArticle', 'variable'=>$idArticle],
                     ['prep'=>':idValid', 'variable'=>$valid]];
-        return ActionDB::select($select, $param, 1)[0];
+        return ActionDB::select($select, $param, 2)[0];
 
     }
     public function updateArticle ($param) {
@@ -137,7 +132,7 @@ class SQLBlog
     public function checkIdArticle ($idArticle) {
         $select = "SELECT COUNT(`id`) AS `nbrArticle` FROM `articles` WHERE `id` = :idArticle;";
         $param = [['prep'=>':idArticle', 'variable'=>$idArticle]];
-        $checkArticle = ActionDB::select($select, $param, 1)[0]['nbrArticle'];
+        $checkArticle = ActionDB::select($select, $param, 2)[0]['nbrArticle'];
         if($checkArticle == 1) {
             return true;
         }
@@ -145,16 +140,22 @@ class SQLBlog
     }
     public function deleteArticleByOwner ($param) {
         $delete = "DELETE FROM `articles` WHERE `id` = :idArticle AND `author`=:idUser;";
-        return ActionDB::access($delete, $param, 1);
+        return ActionDB::access($delete, $param, 2);
     }
     public function recordPictureBlog($param) {
-        $insert = "INSERT INTO `pictures`(`name_picture`, `altImg`, `author`) VALUES (:name_picture, :altImg, :idUser);";
-        return ActionDB::access($insert, $param, 1);
+        $insert = "INSERT INTO `pictures`(`altImg`, `carrouselPicture`, `name_picture`, `author`) VALUES (:altImg, :carrousellePicture, :name_picture,  :idUser);";
+        return ActionDB::access($insert, $param, 2);
     }
-    protected function getAllPictureBlog ($valid) {
-        $select = "SELECT * FROM  `pictures` WHERE `valid` = :valid";
+    protected function getPictureBlogPagination ($valid, $firstPage, $PictureByPage) {
+        $select = "SELECT * FROM  `pictures` 
+        WHERE `valid` = :valid
+        LIMIT {$firstPage}, {$PictureByPage};";
         $param = [['prep'=>':valid', 'variable'=>$valid]];
         return ActionDB::select($select, $param, 1);
+    }
+    public function nbrMiniaturePicture () {
+        $select = "SELECT COUNT(`id`) AS `nbrPicture` FROM `pictures`;";
+        return ActionDB::select($select, [], 1)[0]['nbrPicture'];
     }
     public function getLastSubject () {
         $select = "SELECT `id` FROM `subjects` ORDER BY`id` LIMIT 1;";
@@ -166,6 +167,32 @@ class SQLBlog
     }
     public function numberOfArticleAllSubject () {
         $select = "SELECT COUNT(`id`) AS `nbrArticle` FROM `articles`;";
-        return ActionDB::select($select, [], 1)[0]['nbrArticle'];
+        return ActionDB::select($select, [], 2)[0]['nbrArticle'];
+    }
+    protected function getCarouselPictures ($valid, $carrousel, $limit) {
+        $select = "SELECT `name_picture`, `altImg` FROM `pictures` WHERE `valid` = :valid AND `carrouselPicture` = :carrouselPicture ORDER BY `id` ASC LIMIT {$limit};";
+        $param = [['prep'=>':valid', 'variable'=>$valid], 
+                ['prep'=>':carrouselPicture', 'variable'=>$carrousel]];
+        return ActionDB::select($select, $param, 1);
+    }
+    public function checkPictureExist ($idPicture) {
+        $select = "SELECT COUNT(`id`) AS `nbrPicture` FROM `pictures` WHERE `id` = :idPicture;";
+        $param = [['prep'=>':idPicture', 'variable'=>$idPicture]];
+        $chekPicture = ActionDB::select($select, $param, 1)[0]['nbrPicture'];
+        if($chekPicture == 1) {
+            return true;
+        }
+        return false;
+    }
+    private function getNamePicture ($param) {
+        $select = "SELECT `name_picture` FROM `pictures` WHERE `id` = :idPicture;";
+        return ActionDB::select($select, $param, 1)[0]['name_picture'];
+    }
+    public function deletePicture ($idPicture) {
+        $param = [['prep'=>':idPicture', 'variable'=>$idPicture]];
+        $namePicture = $this->getNamePicture ($param);
+        $delete = "DELETE FROM `pictures` WHERE `id` = :idPicture;";
+        ActionDB::access($delete, $param, 1);
+        return $namePicture;
     }
 }
