@@ -8,7 +8,7 @@ if(isset($_GET['page']) && (!empty($_GET['page']))) {
     $currentPage = 1;
   }
 $parPage = 10;
-$nbrArticles = $blog->numberOfArticleAllSubject (0);
+$nbrArticles = $blog->numberOfArticleAllSubject (1);
 $pages = ceil($nbrArticles/$parPage);
 $firstPage = ($currentPage * $parPage ) - $parPage;
 echo '<p>Page : '.$currentPage.'</p>';

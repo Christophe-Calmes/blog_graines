@@ -165,9 +165,10 @@ class SQLBlog
         }
         return false;
     }
-    public function numberOfArticleAllSubject () {
-        $select = "SELECT COUNT(`id`) AS `nbrArticle` FROM `articles`;";
-        return ActionDB::select($select, [], 1)[0]['nbrArticle'];
+    public function numberOfArticleAllSubject ($publish) {
+        $select = "SELECT COUNT(`id`) AS `nbrArticle` FROM `articles` WHERE `publish`=:publish;";
+        $param = [['prep'=>':publish', 'variable'=>$publish]];
+        return ActionDB::select($select, $param, 1)[0]['nbrArticle'];
     }
     protected function getCarouselPictures ($valid, $carrousel, $limit) {
         $select = "SELECT `name_picture`, `altImg` FROM `pictures` WHERE `valid` = :valid AND `carrouselPicture` = :carrouselPicture ORDER BY `id` ASC LIMIT {$limit};";
