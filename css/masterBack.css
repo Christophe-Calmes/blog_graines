@@ -6,12 +6,10 @@
 /* CSS HEX */
 
 /* SCSS HEX */
-/*
---seasalt: #F9F9F9ff;
---battleship-gray: #8A7E6Eff;
---french-gray: #C7BDC0ff;
---lemon-chiffon: #FFF8D2ff;
---black: #000000ff;*/
+/*--black-bean: #320001ff;
+--sinopia: #C5522Eff;
+--kobicha: #5D3720ff;
+--vanilla: #FFF0B3ff;*/
 
 
 
@@ -30,16 +28,16 @@ $gradient-radial: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
 */
 :root {
   /*Variables Button*/
-  --body-color:#8A7E6Eff;
-  --main-background-color: #C7BDC0ff;
-  --main-color:  #000000ff;
-  --main-background-MagicForm: #FFF8D2ff;
+  --body-color:#320001ff;
+  --main-background-color: #C5522Eff;
+  --main-color: rgb(236, 236, 236);
+  --main-background-MagicForm: #5D3720ff;
   --main-background-navBar: #5D3720ff;
   --color-select: #ECBC2Dff;
   --color-selected: #ECBC2Dff;
-  --main-border: 1px solid #F9F9F9ff;
+  --main-border: 1px solid #ECBC2Dff;
   --main-radius: 5px;
-  --main-radiusInput: 10px;
+  --main-radiusInput: 5px;
   /*print variable*/
   --main-printBorder: #9e9e9e solid 1px;
   --main-PrintBackGround: var(--color-neutralBone);
@@ -54,14 +52,14 @@ $gradient-radial: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
   --main-cursor: pointer;
   --main-marginButton: 0.2em;
   /*Variables global*/
-  --main-shadow:  radial-gradient(#F9F9F9ff, #8A7E6Eff, #C7BDC0ff, #FFF8D2ff, #000000ff);
+  --main-shadow: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
   /*--font-family: "Bebas Neue", sans-serif;*/
   --font-family: "IBM Plex Mono", monospace;;
   --font-family-titleEvent: "IBM Plex Mono", monospace;
   --font-weight: 500;
   --font-style: normal;
-  --color-title:  #FFF8D2ff;
-  --color-subTitle: #C7BDC0ff;
+  --color-title: #FFF0B3ff;
+  --color-subTitle: #FFF0B3ff;
   /*Présentation*/
   --padding-sheddulingShop: 0.2em 0 0.2em 0;
   /*Variable color*/
@@ -74,7 +72,7 @@ $gradient-radial: radial-gradient(#320001ff, #C5522Eff, #5D3720ff, #FFF0B3ff);
   --color-darkGreen: #03470D;
   --color-orange: #cc3915;
   --color-neutralBone: #fdfdf8;
-  --color-yellowAlternate: #FFF8D2ff;
+  --color-yellowAlternate: #ccb21dd3;
 
 }
 /*Presentation basique*/
@@ -175,6 +173,16 @@ a {
  .down {
   margin-top: 15vh;
  }
+ .borderDataSheetWeapon {
+  margin-top: 1em;
+  margin-left: 0;
+  margin-right: auto;
+  width: fit-content;
+  background-color: var(--main-background-color);
+  /*border: var(--main-border);*/
+  border-radius: var(--main-radius);
+  padding: 0.5em;
+ }
 
 /*Flex*/
 .hoursOfShopping {
@@ -244,7 +252,16 @@ a {
 .form-AdmiEvent {
   display: contents;
 }
-
+.nav {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background: var(--main-background-navBar);
+    border-radius: var(--main-radius);
+    border: 1px solid var(--main-color-interne);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    width: auto;
+    padding: 0.25em;
+}
 .tableAdminNews7 {
   display: flex;
   justify-content: space-around;
@@ -286,7 +303,7 @@ a {
     align-items: flex-start;
 }
 .open{
-  width: auto;
+  width: 15vw;
 }
 .listRow {
   display: inline-block;
@@ -483,7 +500,7 @@ select:disabled {
 .navigationBandeau {
   list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -824,7 +841,6 @@ transition: display 3s;
 nav {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .menu {
@@ -917,36 +933,6 @@ nav {
 
   
 /*GRID*/
-.gridPage {  
-  display: grid;
-  grid-template-columns: 0.1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 6fr 0.2fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "header header header"
-    "navigation mainPage mainPage"
-    "navigation mainPage mainPage"
-    "footer footer footer";
-}
-
-.header { 
-  grid-area: header;
-}
-
-.navigation { 
-  grid-area: navigation; 
-}
-
-.footer { 
-  grid-area: footer; 
-}
-
-.mainPage { 
-  grid-area: mainPage;
-
-}
-
 .pictureBlog {
   border-radius: var(--main-radius);
   border: var(--main-border);
@@ -1059,8 +1045,7 @@ nav {
   }
   .menu-btn {
       position: absolute;
-      top: 2vh;
-      left: 2vw;
+      top: 3vh;
       display: block;
       width: fit-content;
       display: flex;

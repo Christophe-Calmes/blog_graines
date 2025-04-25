@@ -9,4 +9,4 @@
     <link rel="stylesheet" href="<?=$css?>" media="print">
     <title><?=$title?></title>
   </head>
-  <body>
+  <body class="gridPage">
