@@ -8,5 +8,6 @@
     <link rel="stylesheet" href="<?=$css?>" media="screen">
     <link rel="stylesheet" href="<?=$css?>" media="print">
     <title><?=$title?></title>
-  </head>
+</head>
   <body class="gridPage">
+  Coucou
